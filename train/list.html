@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+ <link rel="stylesheet" href='../css/main.css'>
+    </head>
+<body>  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="quiz">
+  <h4>물에 빠지면 누구먼저 구할 것임?</h4>
+  <button>와이프</button>
+  <button>부모님</button>
+  <button>키우던 개</button></div>
+<p>Drag the W3Schools image into the rectangle:</p>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src="../img/car3.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}   
+document.querySelector('#quiz').addEventListener('click',function(e){
+    switch(e.target.innerHTML){
+case '와이프': alert('와이프를 좋아하시네요'); break
+case '부모님': alert('효자네요');break
+case '키우던 개': alert('역시 사람보단 동물이 더 낫죠');break0 }})
+</script> 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>       
+
+ 
+</body>

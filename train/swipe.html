@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.slide {
+  flex: 0 0 100%;
+}
+</style>
+</head>
+<body>
+
+<div id="carousel">
+  <div class="slide">Slide 1</div>
+  <div class="slide">Slide 2</div>
+  <div class="slide">Slide 3</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  var $carousel = $("#carousel");
+  var $slides = $carousel.find(".slide");
+
+  // 마우스 움직임 감지
+  $(document).on("mousemove", function(e) {
+    // 마우스 위치를 구함
+    var x = e.pageX;
+
+    // 마우스 위치가 슬라이드의 왼쪽 절반에 있으면
+    if (x < $carousel.width() / 2) {
+      // 슬라이드를 왼쪽으로 이동
+      $carousel.scrollLeft(-1);
+    } else {
+      // 슬라이드를 오른쪽으로 이동
+      $carousel.scrollLeft(1);
+    }
+  });
+});
+</script>
+</body>
+</html>
+

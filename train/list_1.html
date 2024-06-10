@@ -1,0 +1,101 @@
+<!doctype html>
+
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+ <link rel="stylesheet" href='../css/main.css'>
+    </head>
+<body>  
+ <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<div class="container" >
+<div class="row yu"></div><div class="row tu"></div>
+<div class="row tu_1"></div>
+<button class="btn btn-danger mb-4 st_1 mt-">상품 더보기</button>
+<button class="btn btn-danger mb-4 st">Sort Price</button>
+<button class="btn btn-danger mb-4 st_2">Sort Product</button>
+<button class="btn btn-danger mb-4 st_4">Origin</button><br>
+<input type="text" id="ans">
+<button class="btn btn-primary st_3">Filter below</button>
+</div>
+<script>
+    let ount = 0; 
+$('.st_1').on('click',()=>{ount++;    if (ount == 1) { 
+$.get('https://codingapple1.github.io/js/more1.json').done( 
+    (da)=>{ da.forEach((a,s)=>{run('.tu',a)});
+$('.st').on('click',()=> bn(da,'.tu'));
+$('.st_2').on('click',()=> bn_1(da,'.tu'));
+$('.st_3').on('click',()=> bn_2(da,'.tu'));})                       
+$('.st_4').on('click',()=>{ 
+$.get('https://codingapple1.github.io/js/more1.json').done( 
+    (da_1)=>{ bn_3(da_1,'.tu')})});  };
+   if (ount == 2) { 
+$.get('https://codingapple1.github.io/js/more2.json').done( 
+    (dao)=>{ dao.forEach(a=>{run('.tu_1',a);})
+$('.st').on('click',()=> bn(dao,'.tu_1'));
+$('.st_2').on('click',()=> bn_1(dao,'.tu_1'));
+$('.st_3').on('click',()=> bn_2(dao,'.tu_1')); });
+$('.st_4').on('click',()=>{ 
+$.get('https://codingapple1.github.io/js/more2.json').done( 
+    (da_1)=>{ bn_3(da_1,'.tu_1')})});                 
+   $('.st_1').addClass('hd')}});
+    
+$(document).on('click', '.buy', function() { const dataIndex = $(this).data('index');console.log(this,dataIndex); 
+    bn_4(dataIndex) 
+});    
+function bn_4(dataIndex){ 
+    if (!localStorage.cart){ 
+localStorage.setItem(`cart`, JSON.stringify([{title:dataIndex, count:1}]))}else{ const data = JSON.parse(localStorage.cart);
+cj(data,dataIndex); console.log(data);
+  localStorage.setItem('cart', JSON.stringify(data))}}; 
+    
+function cj(ta,ne){let ya=ta.findIndex(f=>f.title==ne);
+    if(ya==-1){ta.push({title:ne, count:1})}else{
+      ta[ya].count++;  
+    }}
+    
+  var ts_1 = [       
+    { id : 0, price : 90000, title : 'Blossom Dress' },
+    { id : 1, price : 50000, title : 'Springfield Shirt' },
+    { id : 2, price : 60000, title : 'Black Monastery' } ];
+  var ts = [       
+    { id : 0, price : 90000, title : 'Blossom Dress' },
+    { id : 1, price : 50000, title : 'Springfield Shirt' },
+    { id : 2, price : 60000, title : 'Black Monastery' } ];
+ts.forEach((a,s)=> run('.yu',a,s) ); 
+    
+$('.st_2').on('click',()=> bn_1(ts,'.yu'));
+$('.st').on('click',()=> bn(ts,'.yu'));
+$('.st_3').on('click',()=> bn_2(ts,'.yu'));
+$('.st_4').on('click',()=> bn_3(ts_1,'.yu'));
+    
+function bn_3(ar,vo){$(vo).html(''); ar.forEach(a=> run(vo,a));
+}; 
+ function bn_2(ar,vo){ 
+var nw = ar.filter(a => a['price'] <= Number($('#ans').val()))
+     $(vo).html(''); nw.forEach(a=>run(vo,a));
+$('.st').on('click',()=> bn(nw,vo));
+$('.st_2').on('click',()=> bn_1(nw,vo))}; 
+    
+ function bn_1(ar,vo){ ar.sort((a,b)=>{
+  if(a.title<b['title']){return 1 } else{ return -1} });
+$(vo).html(''); ar.forEach(a=>run(vo,a))} 
+    
+ function bn(ar,vo){ ar.sort((a,b)=>{
+    return b.price-a.price});$(vo).html('');
+ar.forEach(a=>run(vo,a))}   
+
+function run(op, iz){
+let temp=`<div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${iz['title']}</h5>
+        <p>가격 : <span>${iz.price}</span></p>
+<button class="buy mb-3" data-index="${iz.title}">Buy</button>
+      </div>`; $(op).append(temp)} 
+
+ 
+</script> 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>       
+
+ 
+</body>
