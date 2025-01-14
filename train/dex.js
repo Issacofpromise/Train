@@ -13,9 +13,11 @@ $('form').on('submit', function(w){ let tp=$('#na').val()
 } else if(/\S@\S+\.\S/.test(tp)){} else{alert('이메일형식아님');w.preventDefault() }  });
  $('form').on('submit', function(w){ let ve=$('#do').val()
 if(ve==''){alert('PW must be filled out');w.preventDefault()}; 
-if(ve.length<6){alert('PW must be beyond six text');w.preventDefault()}; if(/[A-Z]/.test(ve)==false){alert('최소 영대문자 한자 포함 하십시오.');w.preventDefault() }}); let ke=$('#ss').html();
+if(ve.length<6){alert('PW must be beyond six text');w.preventDefault()}; 
+if(/[A-Z]/.test(ve)==false){alert('최소 영문대문자를 한 자 포함 하십시오.');
+w.preventDefault() }}); let ke=$('#ss').html();
 let io=setInterval(op,1000);
-    function op(){ke--;if(ke>=0){ $('#ss').html(ke)
+function op(){ke--;if(ke>=0){ $('#ss').html(ke)
 }else{$('.alert-danger').hide();clearInterval(io)};console.log(ke)}
 
 let st=0; let clic=false; let sb=$('.sb'); let sl=$('.sl'); 
@@ -60,9 +62,9 @@ document.getElementById('op').innerHTML='JS 고수에요.';
  $('#hello').css('color','Lime');  
 document.querySelectorAll('h1').forEach(d=>d.style.fontSize='16px')    
     document.getElementsByClassName('girl')[0].addEventListener('click',
-function(){document.getElementsByClassName('aer')[0].innerHTML='ID 입력해쥬'}); 
+function(){document.getElementsByClassName('aer')[0].innerHTML='ID 입력'}); 
 document.getElementsByClassName('girl1')[0].addEventListener('mouseover',
-function(){document.getElementsByClassName('aer')[0].innerHTML='PW 입력해쥬'});
+function(){document.getElementsByClassName('aer')[0].innerHTML='PW 입력'});
 document.getElementById('girl2').addEventListener('click',
 function(){document.getElementsByClassName('aer')[0].style.display='none'}); 
     document.getElementById('girl3').addEventListener('mouseover',
